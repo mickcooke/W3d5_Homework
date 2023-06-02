@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+    <form class="form-inline" action="/books" method="post">
+        <h2><b>Add book</b></h2>
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre">
+        <label for="publisher">Publisher</label>
+        <input type="text" name="publisher" id="publisher">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" rows="4" cols="5"></textarea>
+        <div class="checked_out">
+        <label for="checked_out" align-item="center">Checked out?</label>
+        <input type="checkbox" name="checked_out" id="checked_out">
+        </div>
+        <input type="submit" value="Add book">
+       
+
+
+    </form>
+    <section class="display_books">
+{% for book in books %}
+    
+    <hr>
+    <h2><b>Title:</b> {{book.title}}</h2>
+    <h2><b>Author:</b> {{book.author}}</h2>
+    <h2><b>Genre:</b> {{book.genre}}</h2>
+    {% if book.checked_out %}
+    <p><i>Checked Out</i></p>
+    {% else %}
+    <p><i>On shelf</i></p>
+    {% endif %}
+    <a href="/books/{{books.index(book)}}">Show book</a>
+    <form class="form-inline" action="/books/delete/{{ books.index(book) }}" method="post">
+        <input type="submit" value="Delete Book">
+    </form>
+    
+
+    {% endfor %}
+</section>
+
+
+
+{% endblock %}
+
+
+
+
+
+
