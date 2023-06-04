@@ -36,5 +36,13 @@ def delete_by_index(index):
     delete_book(int(index))
     return redirect ("/books")
 
+@app.route("/books/updateco/<index>", methods=["POST"])
+def update_checked_out_status(index):
+    chosen_book = books[int(index)]
+    chosen_book.checked_out = True if "checked_out" in request.form else False
+    return render_template("index.html", title="Home", books=books)
+    
+
+
 
     

@@ -32,17 +32,32 @@
     <h2><b>Title:</b> {{book.title}}</h2>
     <h2><b>Author:</b> {{book.author}}</h2>
     <h2><b>Genre:</b> {{book.genre}}</h2>
-    {% if book.checked_out %}
-    <p><i>Checked Out</i></p>
-    {% else %}
-    <p><i>On shelf</i></p>
-    {% endif %}
+    
+   
     <a href="/books/{{books.index(book)}}">Show book</a>
     <form class="form-inline" action="/books/delete/{{ books.index(book) }}" method="post">
         <input type="submit" value="Delete Book">
     </form>
+   
+        <!-- adding ability to change checked out status -->
+        {% if book.checked_out %}
+        <p><i>Checked Out</i></p>
+        <form class="checked_out" action="/books/updateco/{{ books.index(book) }}" method="post">
+            <label for="checked_out" align-item="center">Checked Out?</label>
+        <input type="checkbox" checked="checked" name="checked_out" id="checked_out">
+        <input type="submit" value="Update Status">
+    </form>
+        {% else %}
+        <p><i>On shelf</i></p>
+        <form class="checked_out" action="/books/updateco/{{ books.index(book) }}" method="post">
+            <label for="checked_out" align-item="center">Checked Out?</label>
+        <input type="checkbox" name="checked_out" id="checked_out">
+        <input type="submit" value="Update Status">
+        </form>
+        {% endif %}
+   
+   
     
-
     {% endfor %}
 </section>
 
