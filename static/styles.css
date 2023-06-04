@@ -37,7 +37,8 @@ h2 {
 }
 
 .form-inline textarea {
-    width: 300px;   
+    width: 300px;
+    border: 1px solid #ddd;   
     
 }
 
@@ -79,4 +80,13 @@ h2 {
     height: 25px;
     width: 25px;
     background-color: #eee;
+}
+
+.boxed {
+    width: 400px;
+    padding:0px;
+    border: 0px;
+    margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
 }

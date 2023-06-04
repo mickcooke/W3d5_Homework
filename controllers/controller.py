@@ -21,15 +21,21 @@ def add_book():
     publisher = request.form["publisher"]
     description = request.form["description"]
     newbook = Book(
-        title=title,
-        author=author,
-        genre=genre,
-        publisher=publisher,
-        description=description,
-        checked_out = checked_out    
-        )
-    add_new_book(newbook)
-    return redirect ("/books")
+    title=title,
+    author=author,
+    genre=genre,
+    publisher=publisher,
+    description=description,
+    checked_out = checked_out    
+    )
+    if title == "" or author == "":
+        return redirect ("/books")
+    else:
+        add_new_book(newbook)
+        return redirect ("/books")
+    
+    
+    
 
 @app.route("/books/delete/<index>", methods=["POST"])
 def delete_by_index(index):

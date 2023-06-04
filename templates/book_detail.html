@@ -8,10 +8,12 @@
     <h2><b>Author:</b> {{book.author}}</h2>
     <h2><b>Genre:</b> {{book.genre}}</h2>
     <h2><b>Publisher:</b> {{book.publisher}}</h2>
+    <div class="boxed">
     <h2><b>Description:</b> {{book.description}}</h2>
+    </div>
 
     {% if book.checked_out %}
-    <p><i>Checked Out</i></p>
+    <p><i style="color:red;">Checked Out</i></p>
     {% else %}
     <p><i>On shelf</i></p>
     {% endif %}
